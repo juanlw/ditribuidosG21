@@ -30,6 +30,20 @@
          	$type = $consulta->fetch(PDO::FETCH_ASSOC);
             return $type;
 		}
+
+		public function recuperarTodos()
+		{
+			$sql = "SELECT * FROM product";
+			$consulta = $this->base->prepare($sql);
+			$consulta->execute();
+         	$productos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+         	$productosCopy = array();
+         	foreach ($productos as $prod) {
+         		$prod['producttype'] = $this->recuperarTipo($prod['producttype']);
+         		$productosCopy[] = $prod;
+         	}
+            return $productosCopy;
+		}
 	}
 
  ?>

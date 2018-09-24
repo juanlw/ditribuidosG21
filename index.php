@@ -21,5 +21,12 @@
 		$producto = $productoCtrl->recuperar($args['id']);
 		return $response->withJson($producto, 200);
 	});	
+
+	$app->get('/producto', function ($request, $response, $args) {
+		$productoCtrl = new ProductoController();
+		$productos = $productoCtrl->recuperarTodos();
+		return $response->withJson($productos, 200);
+	});	
+
 	$app->run();
  ?>
