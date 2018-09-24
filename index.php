@@ -17,8 +17,6 @@
 	$app = new \Slim\App($config);
 	
 	$app->get('/producto/{id}', function ($request, $response, $args) {
-	   	//$response->withStatus(200);
-		//$res->setBody(json_encode($meses));
 		$productoCtrl = new ProductoController();
 		$producto = $productoCtrl->recuperar($args['id']);
 		return $response->withJson($producto, 200);
