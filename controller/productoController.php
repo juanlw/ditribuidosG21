@@ -52,6 +52,29 @@
 			}
 			return $online;
 		}
+
+		public function recuperarPorProductType($tipeId){
+			$productoM = new ProductoModelo();
+			$productos = $productoM->recuperarPorProductType($tipeId);
+			$productosCopy = array();
+			foreach ($productos as $prod) {
+				$prod['precioOnLine'] =  $this->calcularOnline($prod);
+				$productosCopy[] = $prod;
+			}
+			return $productosCopy;
+		}
+
+
+		public function buscarporNombre($nombre){
+			$productoM = new ProductoModelo();
+			$productos = $productoM->buscarPorNombre($nombre);
+			$productosCopy = array();
+			foreach ($productos as $prod) {
+				$prod['precioOnLine'] =  $this->calcularOnline($prod);
+				$productosCopy[] = $prod;
+			}
+			return $productosCopy;
+		}
 	}
 
  ?>

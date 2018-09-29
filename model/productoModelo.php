@@ -44,6 +44,39 @@
          	}
             return $productosCopy;
 		}
+
+		public function recuperarPorProductType($typeId){
+			$sql = "SELECT * FROM product AS p WHERE p.producttype = :typeId";
+			$consulta = $this->base->prepare($sql);
+			$consulta->bindParam(':typeId', $typeId, PDO::PARAM_INT);
+			$consulta->execute();
+			$productos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+			
+			$productType = $this->recuperarTipo($typeId);
+			$productosCopy = array();
+         	foreach ($productos as $prod) {
+         		$prod['producttype'] = $productType;
+         		$productosCopy[] = $prod;
+         	}
+
+            return $productosCopy;
+		}
+
+		public function buscarPorNombre($nombre){
+			$sql = "SELECT * FROM product AS p WHERE  p.name LIKE  :nombre";
+			$consulta = $this->base->prepare($sql);
+			$nombre = "%".$nombre."%";
+			$consulta->bindParam(':nombre', $nombre, PDO::PARAM_STR);
+			$consulta->execute();
+			$productos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+			
+			$productosCopy = array();
+         	foreach ($productos as $prod) {
+         		$prod['producttype'] = $this->recuperarTipo($prod['producttype']);
+         		$productosCopy[] = $prod;
+         	}
+            return $productosCopy;
+		}
 	}
 
  ?>
