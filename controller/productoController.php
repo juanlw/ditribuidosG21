@@ -1,5 +1,5 @@
 <?php 
-	
+
 	/**
 	* 
 	*/
@@ -11,12 +11,20 @@
 			# code...
 		}
 
-		public function recuperar($id)
+		public function recuperar($id, $empleado)
 		{
 			$productoM = new ProductoModelo();
 			$producto = $productoM->recuperar($id);
 			if (!is_null($producto)) {
-				$producto['precioOnLine'] =  $this->calcularOnline($producto);
+				if ($empleado) {
+					if ($this->auntentificar($empleado)) {
+						$producto['precioOnLine'] = $producto['costprice'];
+					}
+					
+				}
+				else{
+					$producto['precioOnLine'] =  $this->calcularOnline($producto);
+				}
 			}
 			return $producto;
 		}
@@ -53,6 +61,19 @@
 			return $online;
 		}
 
+		public function auntentificar($token)
+		{	
+			//$headers = array("Authorization: $token");
+			$ch = curl_init('localhost/distribuidos/rrhhService.php/autenticarse');
+	    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: ' . $token));
+			$respuesta = curl_exec($ch);
+			$http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE); 
+			curl_close($ch);
+			return $http_code == 200;
+			/*return true;*/
+		}
+
 		public function recuperarPorProductType($tipeId){
 			$productoM = new ProductoModelo();
 			$productos = $productoM->recuperarPorProductType($tipeId);
@@ -63,8 +84,7 @@
 			}
 			return $productosCopy;
 		}
-
-
+		
 		public function buscarporNombre($nombre){
 			$productoM = new ProductoModelo();
 			$productos = $productoM->buscarPorNombre($nombre);

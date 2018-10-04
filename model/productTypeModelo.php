@@ -9,7 +9,6 @@
 		{
 			parent::__construct("stock");
 		}
-
 		public function recuperar($id)
 		{
 			$sql = "SELECT * FROM producttype AS pt WHERE pt.id = :unId";
@@ -19,7 +18,6 @@
          	$type = $consulta->fetch(PDO::FETCH_ASSOC);
             return $type;
 		}
-
 		public function recuperarTodos()
 		{
 			$sql = "SELECT * FROM producttype";
@@ -29,7 +27,6 @@
          	
             return $productTypes;
 		}
-
 		public function recuperarPorProductType($typeId){
 			$sql = "SELECT * FROM product AS p WHERE p.producttype = :typeId";
 			$consulta = $this->base->prepare($sql);
@@ -38,7 +35,6 @@
 			$productos = $consulta->fetch(PDO::FETCH_ASSOC);
 			return $productos;
 		}
-
 		public function buscarPorNombre($nombre){
 			$sql = "SELECT * FROM product AS p WHERE  p.name LIKE  :nombre";
 			$consulta = $this->base->prepare($sql);
@@ -48,5 +44,4 @@
 			$productos = $consulta->fetch(PDEO::FETCH_ASSOC);
 		}
 	}
-
  ?>

@@ -58,10 +58,9 @@
          		$prod['producttype'] = $productType;
          		$productosCopy[] = $prod;
          	}
-
             return $productosCopy;
 		}
-
+		
 		public function buscarPorNombre($nombre){
 			$sql = "SELECT * FROM product AS p WHERE  p.name LIKE  :nombre";
 			$consulta = $this->base->prepare($sql);
