@@ -2,9 +2,9 @@
 	require_once '/vendor/autoload.php';
 	require_once '/model/conexionBD.php';
 	require_once '/model/productoModelo.php';
-	require_once '/model/productTypeModelo.php'; 
-	require_once ("/controller/productoController.php");
-	require_once ("/controller/productTypeController.php");
+	require_once '/model/productTypeModelo.php';
+	require_once '/controller/productoController.php';
+	require_once '/controller/productTypeController.php';
 	require_once '/vendor/slim/slim/Slim/App.php';
 
 	use \Psr\Http\Message\ServerRequestInterface as Request;
@@ -42,7 +42,7 @@
 		$productoCtrl = new ProductoController();
 		$productos = $productoCtrl->recuperarPorProductType($args['typeId']);
 		return $response->withJson($productos, 200);
-	});	
+	});
 	$app->get('/productos/buscar', function ($request, $response, $args){
 		$productoCtrl = new ProductoController();
 		$productos = $productoCtrl->buscarPorNombre($request->getParam('nombre'));

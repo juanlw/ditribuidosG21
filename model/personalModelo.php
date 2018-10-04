@@ -33,6 +33,36 @@
 			$usuario = $consulta-> fetch();
 			return !is_null($usuario);
 		}
+
+		public function recuperarTodos()
+		{
+			$sql = "SELECT * FROM employee";
+			$consulta = $this->base->prepare($sql);
+			$consulta->execute();
+			$personas = $consulta->fetchAll(PDO::FETCH_ASSOC);
+			return $personas;
+		}
+
+		public function recuperar($id)
+		{
+			$sql = "SELECT * FROM employee AS p WHERE p.id = :unId";
+			$consulta = $this->base->prepare($sql);
+			$consulta-> bindParam(':unId', $id, PDO::PARAM_INT);
+			$consulta->execute();
+			$persona = $consulta->fetch(PDO::FETCH_ASSOC);
+			$persona['employeetype'] = $this->recuperarTipo($persona['employeetype']);
+			return $persona;
+		}
+
+		private function recuperarTipo($employeetype)
+		{
+			$sql = "SELECT * FROM employeetype AS pt WHERE pt.id = :unId";
+			$consulta = $this->base->prepare($sql);
+			$consulta-> bindParam(':unId', $employeetype, PDO::PARAM_INT);
+			$consulta->execute();
+			$type = $consulta->fetch(PDO::FETCH_ASSOC);
+			return $type;
+		}
 	}
 
  ?>

@@ -6,13 +6,13 @@
 	abstract class ConexionABD
 	{
 		const USERNAME = "grupo63";
-    const PASSWORD = "ZTJhNTVlODlhMDk0";
+		const PASSWORD = "ZTJhNTVlODlhMDk0";
 		const HOST ="localhost";
 		var $base;	
 
 		function __construct($db)
 		{	
-			    $u=self::USERNAME;
+			$u=self::USERNAME;
         	$p=self::PASSWORD;
         	$host=self::HOST;
         	$this->base = new PDO("mysql:dbname=$db;host=$host", $u, $p);

@@ -31,6 +31,19 @@
 			return $personalM->autenticar($token); 
 		}
 
+		public function recuperarTodos(){
+			$personaM = new PersonalModelo();
+			$personas = $personaM->recuperarTodos();
+			return $personas;
+		}
+
+		public function recuperar($id, $token)
+		{
+			$personaM = new PersonalModelo();
+			$personas = $personaM->recuperar($id);
+			return $personas;
+		}
+
 	}
 
  ?>
