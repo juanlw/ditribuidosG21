@@ -15,7 +15,7 @@
 		{
 			$productoM = new ProductoModelo();
 			$producto = $productoM->recuperar($id);
-			if (!is_null($producto)) {
+			if ($producto) {
 				if ($empleado) {
 					if ($this->auntentificar($empleado)) {
 						$producto['precioOnLine'] = $producto['costprice'];
