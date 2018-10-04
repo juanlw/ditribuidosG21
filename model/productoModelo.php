@@ -17,7 +17,9 @@
            	$consulta-> bindParam(':unId', $id, PDO::PARAM_INT);
 			$consulta->execute();
          	$producto = $consulta->fetch(PDO::FETCH_ASSOC);
-         	$producto['producttype'] = $this->recuperarTipo($producto['producttype']);
+         	if ($producto){
+                $producto['producttype'] = $this->recuperarTipo($producto['producttype']);
+            }
             return $producto;
 		}
 

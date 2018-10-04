@@ -1,11 +1,11 @@
 <?php 
-	require_once '/vendor/autoload.php';
-	require_once '/model/conexionBD.php';
-	require_once '/model/productoModelo.php';
-	require_once '/model/productTypeModelo.php';
-	require_once '/controller/productoController.php';
-	require_once '/controller/productTypeController.php';
-	require_once '/vendor/slim/slim/Slim/App.php';
+	require_once 'vendor/autoload.php';
+	require_once 'model/conexionBD.php';
+	require_once 'model/productoModelo.php';
+	require_once 'model/productTypeModelo.php';
+	require_once 'controller/productoController.php';
+	require_once 'controller/productTypeController.php';
+	require_once 'vendor/slim/slim/Slim/App.php';
 
 	use \Psr\Http\Message\ServerRequestInterface as Request;
 	use \Psr\Http\Message\ResponseInterface as Response;

@@ -50,7 +50,9 @@
 			$consulta-> bindParam(':unId', $id, PDO::PARAM_INT);
 			$consulta->execute();
 			$persona = $consulta->fetch(PDO::FETCH_ASSOC);
-			$persona['employeetype'] = $this->recuperarTipo($persona['employeetype']);
+			if ($persona){
+                $persona['employeetype'] = $this->recuperarTipo($persona['employeetype']);
+            }
 			return $persona;
 		}
 
