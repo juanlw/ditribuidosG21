@@ -58,7 +58,7 @@
 		$productTypeCtrl = new ProductTypeController();
 		$productType = $productTypeCtrl->recuperar($args['id']);
 		return $response->withJson($productType, 200);
-	});	
+	});
 
 	$app->run();
  ?>

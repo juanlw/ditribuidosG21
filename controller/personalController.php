@@ -37,11 +37,25 @@
 			return $personas;
 		}
 
-		public function recuperar($id, $token)
+		public function recuperar($id)
 		{
 			$personaM = new PersonalModelo();
 			$personas = $personaM->recuperar($id);
 			return $personas;
+		}
+
+		public function recuperarTodosEmployeeType()
+		{
+			$personaM = new PersonalModelo();
+			$employeeTypes = $personaM->recuperarTodosEmployeeType();
+			return $employeeTypes;
+		}
+
+		public function recuperarEmployeeType($id)
+		{
+			$personaM = new PersonalModelo();
+			$employeeTypes = $personaM->recuperarTipo($id);
+			return $employeeTypes;
 		}
 
 	}

@@ -54,7 +54,7 @@
 			return $persona;
 		}
 
-		private function recuperarTipo($employeetype)
+		public function recuperarTipo($employeetype)
 		{
 			$sql = "SELECT * FROM employeetype AS pt WHERE pt.id = :unId";
 			$consulta = $this->base->prepare($sql);
@@ -62,6 +62,15 @@
 			$consulta->execute();
 			$type = $consulta->fetch(PDO::FETCH_ASSOC);
 			return $type;
+		}
+
+		public function recuperarTodosEmployeeType()
+		{
+			$sql = "SELECT * FROM employeetype";
+			$consulta = $this->base->prepare($sql);
+			$consulta->execute();
+			$employeeType = $consulta->fetchAll(PDO::FETCH_ASSOC);
+			return $employeeType;
 		}
 	}
 

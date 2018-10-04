@@ -60,5 +60,18 @@
 		return $response->withJson($persona, 200);
 	});
 
+	///employee types
+	$appRRHH->get('/employeeTypes', function ($request, $response, $args) {
+		$personalCtrl = new personalController();
+		$employeeTypes = $personalCtrl->recuperarTodosEmployeeType();
+		return $response->withJson($employeeTypes, 200);
+	});
+
+	$appRRHH->get('/employeeTypes/{id}', function ($request, $response, $args) {
+		$personalCtrl = new personalController();
+		$employeeType = $personalCtrl->recuperarEmployeeType($args['id']);
+		return $response->withJson($employeeType, 200);
+	});
+
 	$appRRHH->run();
  ?>
