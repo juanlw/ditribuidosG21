@@ -1,9 +1,9 @@
 <?php 
-	require_once '/vendor/autoload.php';
-	require_once '/model/conexionBD.php';
-	require_once '/model/personalModelo.php';
-	require_once '/controller/personalController.php';
-	require_once '/vendor/slim/slim/Slim/App.php';
+	require_once 'vendor/autoload.php';
+	require_once 'model/conexionBD.php';
+	require_once 'model/personalModelo.php';
+	require_once 'controller/personalController.php';
+	require_once 'vendor/slim/slim/Slim/App.php';
 
 	use \Psr\Http\Message\ServerRequestInterface as Request;
 	use \Psr\Http\Message\ResponseInterface as Response;
@@ -31,7 +31,7 @@
 	$appRRHH->get('/autenticarse', function ($request, $response, $args) {
 		$token =  $request->getHeader('Authorization');
 		$personalCtrl = new PersonalController();
-		$existe = $personalCtrl->autenticar($token);
+		$existe = $personalCtrl->autenticar($token[0]);
 		if ($existe) {
 			$response->withStatus(200);
 		} else {

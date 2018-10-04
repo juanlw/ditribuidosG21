@@ -28,7 +28,7 @@
 			$jwt = new JsonWebToken();
 			$empleado = $jwt->deserializar($token);
 			$personalM = new PersonalModelo();
-			return $personalM->autenticar($token); 
+			return $personalM->autenticar($empleado); 
 		}
 
 		public function recuperarTodos(){
