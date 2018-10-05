@@ -23,7 +23,7 @@
 					
 				}
 				else{
-					$producto['precioOnLine'] =  $this->calcularOnline($producto);
+					//$producto['precioOnLine'] =  $this->calcularOnline($producto);
 				}
 			}
 			return $producto;
@@ -35,13 +35,13 @@
 			$productos = $productoM->recuperarTodos();
 			$productosCopy = array();
 			foreach ($productos as $prod) {
-				$prod['precioOnLine'] =  $this->calcularOnline($prod);
+				//$prod['precioOnLine'] =  $this->calcularOnline($prod);
 				$productosCopy[] = $prod;
 			}
 			return $productosCopy;
 		}
 
-		private function calcularOnline($producto)
+		/*private function calcularOnline($producto)
 		{
 			(int) $venta = $producto['saleprice'];
 			(int) $costo = $producto['costprice']; 
@@ -59,7 +59,7 @@
 				$online = $venta;	
 			}
 			return $online;
-		}
+		}*/
 
 		public function auntentificar($token)
 		{	
@@ -79,7 +79,7 @@
 			$productos = $productoM->recuperarPorProductType($tipeId);
 			$productosCopy = array();
 			foreach ($productos as $prod) {
-				$prod['precioOnLine'] =  $this->calcularOnline($prod);
+				//$prod['precioOnLine'] =  $this->calcularOnline($prod);
 				$productosCopy[] = $prod;
 			}
 			return $productosCopy;
@@ -90,7 +90,7 @@
 			$productos = $productoM->buscarPorNombre($nombre);
 			$productosCopy = array();
 			foreach ($productos as $prod) {
-				$prod['precioOnLine'] =  $this->calcularOnline($prod);
+				//$prod['precioOnLine'] =  $this->calcularOnline($prod);
 				$productosCopy[] = $prod;
 			}
 			return $productosCopy;
