@@ -7,7 +7,7 @@
 		
 		function __construct()
 		{
-			parent::__construct("rrhh");
+			parent::__construct("inudev17_rrhh");
 		}
 
 

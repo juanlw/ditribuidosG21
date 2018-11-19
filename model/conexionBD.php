@@ -5,8 +5,8 @@
 	
 	abstract class ConexionABD
 	{
-		const USERNAME = "grupo63";
-		const PASSWORD = "ZTJhNTVlODlhMDk0";
+		const USERNAME = "inudev17_dssd";
+		const PASSWORD = "dssd1";
 		const HOST ="localhost";
 		var $base;	
 

@@ -7,7 +7,7 @@
 		
 		function __construct()
 		{
-			parent::__construct("stock");
+			parent::__construct("inudev17_stock");
 		}
 
 		public function recuperar($id)
