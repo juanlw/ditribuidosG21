@@ -8,11 +8,11 @@
 -- Versión de PHP: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
+SET AUTOCOMMIT = 0;stock
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
+stockstockstockrrhhstockstock
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `costprice` int(11) NOT NULL,
   `saleprice` int(11) NOT NULL,
   `producttype` int(11) NOT NULL,
+  `stock` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `product_producttype_FK` (`producttype`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
@@ -42,10 +43,9 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 -- Volcado de datos para la tabla `product`
 --
-
-INSERT INTO `product` (`id`, `name`, `costprice`, `saleprice`, `producttype`) VALUES
-(1, 'pala', 100, 120, 1),
-(2, 'tablet', 100, 120, 2);
+INSERT INTO `product` (`id`, `name`, `costprice`, `saleprice`, `producttype`, `stock`) VALUES
+(1, 'pala', 100, 120, 1, 10),
+(2, 'tablet', 100, 120, 2, 22);
 
 -- --------------------------------------------------------
 
