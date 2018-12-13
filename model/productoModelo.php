@@ -78,6 +78,15 @@
          	}
             return $productosCopy;
 		}
+
+		public function comprar($id){
+
+			$sql = "UPDATE product SET stock = stock - 1 WHERE id = :unId AND stock > 0";
+			$consulta = $this->base->prepare($sql);
+			$consulta-> bindParam(':unId', $id, PDO::PARAM_INT);
+			$consulta->execute();
+			return $consulta->rowCount() > 0;
+		}
 	}
 
  ?>

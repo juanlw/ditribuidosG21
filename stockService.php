@@ -60,5 +60,25 @@
 		return $response->withJson($productType, 200);
 	});
 
+
+
+	/*
+	En el body del put enviar solo el id
+	{
+	"id": "1"
+	}
+	*/
+	$app->put('/comprar', function ($request, $response, $args) {
+		$data = $request->getParsedBody();
+		$productoCtrl = new ProductoController();
+		$pudo = $productoCtrl->comprar($data);
+		if ($pudo) {
+			$response->withStatus(200);
+		} else {
+			$response->withStatus(409);
+		}
+		return $response;
+	});
+
 	$app->run();
  ?>

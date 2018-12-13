@@ -95,6 +95,12 @@
 			}
 			return $productosCopy;
 		}
+
+		public function comprar($producto)
+		{
+			$productoM = new ProductoModelo();
+			return $productoM->comprar($producto['id']);
+		}
 	}
 
  ?>
